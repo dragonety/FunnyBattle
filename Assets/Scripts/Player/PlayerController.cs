@@ -65,6 +65,15 @@ public class PlayerController : NetworkBehaviour {
     [SerializeField]
     Transform shootPoint;
 
+    [SerializeField]
+    GameObject sword;
+    [SerializeField]
+    GameObject sheild;
+    [SerializeField]
+    bool isLoopBlock = false;
+
+    
+
 	#endregion
 
     private void Start() {
@@ -119,8 +128,12 @@ public class PlayerController : NetworkBehaviour {
             Attack();
         }
 
-        if (Input.GetMouseButtonDown(1)) {
+        if (Input.GetMouseButtonDown(1) || isLoopBlock) {
             Block();
+        }
+
+        if (Input.GetKeyDown(KeyCode.E)) {
+            Emit();
         }
     }
 
@@ -191,6 +204,19 @@ public class PlayerController : NetworkBehaviour {
         AnimatorStateInfo info = animator.GetCurrentAnimatorStateInfo(0);
         if (!info.IsName("Attack01")) {
             animator.Play("Attack01");
+        }
+    }
+    public void Block() {
+        AnimatorStateInfo info = animator.GetCurrentAnimatorStateInfo(0);
+        if (!info.IsName("Attack02")) {
+            animator.Play("Attack02");
+        }
+    }
+
+    public void Emit() {
+        AnimatorStateInfo info = animator.GetCurrentAnimatorStateInfo(0);
+        if (!info.IsName("Attack01")) {
+            animator.Play("Attack01");
             CmdShootBall();
         }
     }
@@ -219,11 +245,5 @@ public class PlayerController : NetworkBehaviour {
         GameManager.Instance.AddSpawn(magicBall.GetComponent<MagicController>(), this);
     }
 
-    public void Block() {
-        AnimatorStateInfo info = animator.GetCurrentAnimatorStateInfo(0);
-        if (!info.IsName("Attack02")) {
-            animator.Play("Attack02");
-        }
-    }
 
 }

@@ -14,8 +14,7 @@
 ## 项目功能
 
 - 管理模块：
-  - GameManager完成游戏的启动，包括Host和Client的创建
-  - SceneManager游戏场景的切换
+  - GameManager做一些数据上的同步，当前的作用是
   - EffectManager特效的管理
 - 资源管理：待完成
 - 战斗玩法：
@@ -40,5 +39,29 @@
 
 ### Host：
 
+进入login场景
 
+点击login进入lobby场景
+
+点击host创建游戏，进入game场景
+
+正常游玩
+
+ESC打开UI
+
+点击stopHost关闭并返回lobby场景
+
+### Client:
+
+进入login场景
+
+点击login进入lobby场景
+
+点击client,在有host的情况下可以进入game场景
+
+正常有望
+
+ESC打开UI
+
+点击stopClient关闭并返回lobby场景
 

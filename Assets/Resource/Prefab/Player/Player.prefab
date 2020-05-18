@@ -1587,7 +1587,7 @@ BoxCollider:
   m_GameObject: {fileID: 5243134914132203849}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
-  m_Enabled: 0
+  m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 0.14261739, y: 0.9509879, z: 0.030535126}
   m_Center: {x: -0.00000023454737, y: 0.36219957, z: -0.00000055767157}
@@ -1695,6 +1695,7 @@ GameObject:
   - component: {fileID: 5245258353952353399}
   - component: {fileID: 5238801154962549139}
   - component: {fileID: 5229199168063495983}
+  - component: {fileID: 1534909879811686810}
   m_Layer: 11
   m_Name: MeleeWarriorShield
   m_TagString: Untagged
@@ -1762,6 +1763,19 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+--- !u!65 &1534909879811686810
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5243234694384267839}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.39435527, y: 0.6444953, z: 0.08183845}
+  m_Center: {x: -0.00000017790177, y: -0.009417588, z: 0.013934245}
 --- !u!1 &5243239455449065651
 GameObject:
   m_ObjectHideFlags: 0
