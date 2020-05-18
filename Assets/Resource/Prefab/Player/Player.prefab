@@ -45,7 +45,7 @@ GameObject:
   - component: {fileID: 8820365513145305198}
   - component: {fileID: 3250792282050840286}
   - component: {fileID: 4577317518068029373}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Player
   m_TagString: Player
   m_Icon: {fileID: 0}
@@ -194,6 +194,9 @@ MonoBehaviour:
   magicBall: {fileID: 2884216389398387772, guid: 396c73c88dba7f848800487e108b6a51,
     type: 3}
   shootPoint: {fileID: 1067988135780628669}
+  sword: {fileID: 5243134914132203849}
+  sheild: {fileID: 5243234694384267839}
+  isLoopBlock: 0
 --- !u!1 &5242200082611053575
 GameObject:
   m_ObjectHideFlags: 0
@@ -1511,9 +1514,10 @@ GameObject:
   - component: {fileID: 5241443017812653809}
   - component: {fileID: 5229932920923533837}
   - component: {fileID: 6951694640231652015}
+  - component: {fileID: 7108156989690338380}
   m_Layer: 11
   m_Name: MeleeWarrior1HSword
-  m_TagString: Untagged
+  m_TagString: Weapon
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1586,11 +1590,26 @@ BoxCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5243134914132203849}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 0.14261739, y: 0.9509879, z: 0.030535126}
   m_Center: {x: -0.00000023454737, y: 0.36219957, z: -0.00000055767157}
+--- !u!114 &7108156989690338380
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5243134914132203849}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c57e76b4a908e804f869c60e32f7900e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  owner: {fileID: 5242196552886392851}
+  damage: 20
+  stayTime: 1
 --- !u!1 &5243140706577226401
 GameObject:
   m_ObjectHideFlags: 0
@@ -1698,7 +1717,7 @@ GameObject:
   - component: {fileID: 1534909879811686810}
   m_Layer: 11
   m_Name: MeleeWarriorShield
-  m_TagString: Untagged
+  m_TagString: Weapon
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1771,7 +1790,7 @@ BoxCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5243234694384267839}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 0.39435527, y: 0.6444953, z: 0.08183845}
@@ -2446,6 +2465,7 @@ GameObject:
   - component: {fileID: 7821233309774944433}
   - component: {fileID: 4927674942378398780}
   - component: {fileID: 3850031562068810306}
+  - component: {fileID: 8321572046575731369}
   m_Layer: 5
   m_Name: Canvas
   m_TagString: Untagged
@@ -2533,6 +2553,18 @@ MonoBehaviour:
   m_BlockingMask:
     serializedVersion: 2
     m_Bits: 4294967295
+--- !u!114 &8321572046575731369
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6770697308592099760}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2207cc8439943f94fa04b6b261eb8ea8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &7313075904745212048
 GameObject:
   m_ObjectHideFlags: 0

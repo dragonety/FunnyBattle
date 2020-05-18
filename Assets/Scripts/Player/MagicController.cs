@@ -61,6 +61,7 @@ public class MagicController : NetworkBehaviour {
 
         if (other.tag == "Player") {
             other.gameObject.GetComponent<PlayerController>().GetHurt(damage);
+            Debug.Log("hit");
         }
 
         Destroy(gameObject);

@@ -14,26 +14,21 @@
 ## 项目功能
 
 - 管理模块：
-  - GameManager做一些数据上的同步，当前的作用是
+  - GameManager做一些数据上的同步，当前的作用是记录
   - EffectManager特效的管理
 - 资源管理：待完成
 - 战斗玩法：
-  - 玩家控制player，WASD移动，
-  - 玩家左键攻击，右键格挡，E使用技能
-
-## API
-
-|      |      |      |
-| ---- | ---- | ---- |
-|      |      |      |
-|      |      |      |
-|      |      |      |
-|      |      |      |
-|      |      |      |
-|      |      |      |
-|      |      |      |
-|      |      |      |
-|      |      |      |
+  - PlayerController包含所有角色控制的内容
+    - 需要同步position、rotation
+      - 本地玩家按照角色控制位移
+      - 非本地玩家按照同步来的位置信息lerp
+    - 需要同步health
+      - health发生变化时需要同步变更healthBar
+    - player根据isMoving等标志
+    - player发射技能的时候需要向gameManager记录发射物与发射人的dict
+  - MagicController包含技能的碰撞检测
+    - 需要同步velocity
+    - 在发生碰撞的时候需要从gameManager查询是否接触到的是技能释放者
 
 ## 游戏流程
 
@@ -45,7 +40,7 @@
 
 点击host创建游戏，进入game场景
 
-正常游玩
+正常游玩，游戏结束返回lobby
 
 ESC打开UI
 
@@ -59,7 +54,7 @@ ESC打开UI
 
 点击client,在有host的情况下可以进入game场景
 
-正常有望
+正常游玩，游戏结束返回lobby
 
 ESC打开UI
 

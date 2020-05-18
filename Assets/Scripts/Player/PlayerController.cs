@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Analytics;
 using UnityEngine.Networking;
 
 [RequireComponent(typeof(Rigidbody))]
@@ -79,16 +80,22 @@ public class PlayerController : NetworkBehaviour {
     private void Start() {
         if (isLocalPlayer) {
             Camera.main.GetComponent<CameraController>().transPlayer = transform;
+            GameManager.Instance.localPlayer = gameObject;
         }
 
         rigidbody = GetComponent<Rigidbody>();
         capsuleCollider = GetComponent<CapsuleCollider>();
         animator = GetComponent<Animator>();
 
-        isDeath = false;
     }
 
     void Update() {
+
+        if (health<=0) {
+            GameOver();
+            return;
+        }
+
         if (isLocalPlayer) {
             CheckMove();
             CheckAttack();
@@ -103,10 +110,6 @@ public class PlayerController : NetworkBehaviour {
 
     private void CheckMove() {
 
-        if (isDeath) {
-            return;
-        }
-
         var hor = Input.GetAxis("Horizontal");
         var ver = Input.GetAxis("Vertical");
 
@@ -120,6 +123,21 @@ public class PlayerController : NetworkBehaviour {
 
         GetMove(move);
 
+    }
+
+    private void GameOver() {
+        StopClient();
+        StopHost();
+    }
+
+    [Client]
+    private void StopClient() {
+        GameManager.Instance.StopClient();
+    }
+    
+    [Server]
+    private void StopHost() {
+        GameManager.Instance.StopHost();
     }
 
     private void CheckAttack() {
@@ -204,6 +222,7 @@ public class PlayerController : NetworkBehaviour {
         AnimatorStateInfo info = animator.GetCurrentAnimatorStateInfo(0);
         if (!info.IsName("Attack01")) {
             animator.Play("Attack01");
+            isAttacking = true;
         }
     }
     public void Block() {
@@ -228,6 +247,20 @@ public class PlayerController : NetworkBehaviour {
 
     public void GetStab(float damage) {
         animator.Play("Damage01");
+        Debug.Log("hit");
+        health -= (int)damage;
+    }
+
+    [Command]
+    public void CmdGetStab(float damage) {
+        Debug.Log("hit cmd");
+        RpcGetStab(damage);
+    }
+
+    [ClientRpc]
+    private void RpcGetStab(float damage) {
+        animator.Play("Damage01");
+        Debug.Log("hit rpc");
         health -= (int)damage;
     }
 

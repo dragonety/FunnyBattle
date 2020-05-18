@@ -28,24 +28,24 @@ public class UIManager : SingletonMonobehaviour<UIManager> {
     }
 
     public void StartHost() {
-        NetworkManager.singleton.StartHost();
+        GameManager.Instance.StartHost();
         SwitchTo(UIEnum.game);
         SwitchTo(UIEnum.game);
     }
 
     public void StartClient() {
-        NetworkManager.singleton.StartClient();
+        GameManager.Instance.StartClient();
         SwitchTo(UIEnum.game);
         SwitchTo(UIEnum.game);
     }
 
     public void StopHost() {
-        var networkManager = NetworkManager.singleton;
+        GameManager.Instance.StopHost();
         SwitchTo(UIEnum.lobby);
     }
 
     public void StopClient() {
-        NetworkManager.singleton.StopClient();
+        GameManager.Instance.StopClient();
         SwitchTo(UIEnum.lobby);
     }
 
