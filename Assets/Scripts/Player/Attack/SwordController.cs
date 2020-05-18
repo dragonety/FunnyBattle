@@ -12,16 +12,19 @@ public class SwordController : MonoBehaviour {
     private int damage;
 
     private void OnTriggerEnter(Collider other) {
-        if (!CheckSelf(other)) {
+        if (CheckHitable(other)) {
             Hit(other.ClosestPointOnBounds(transform.position), other);
         }
     }
 
-    private bool CheckSelf(Collider other) {
+    private bool CheckHitable(Collider other) {
         if (other.tag == "Player") {
-            PlayerController playerController = other.gameObject.GetComponent<PlayerController>();
+            PlayerController playerController = owner.GetComponent<PlayerController>();
             if (owner == other.gameObject) {
-                return true;
+                return false;
+			} else {
+                Debug.Log("return attack" + playerController.isAttacking);
+                return playerController.isAttacking;
             }
         }
         return false;

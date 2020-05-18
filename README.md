@@ -22,10 +22,18 @@
     - 需要同步position、rotation
       - 本地玩家按照角色控制位移
       - 非本地玩家按照同步来的位置信息lerp
+      
     - 需要同步health
+      
       - health发生变化时需要同步变更healthBar
-    - player根据isMoving等标志
+      
+    - player动画通过networkAnimator同步
+    
     - player发射技能的时候需要向gameManager记录发射物与发射人的dict
+    
+    - player攻击目前存在问题，直接绑定collider会导致多次攻击，通过coroutine倒计时效果不理想
+    
+      打算学习一下项目中的近战判定方式
   - MagicController包含技能的碰撞检测
     - 需要同步velocity
     - 在发生碰撞的时候需要从gameManager查询是否接触到的是技能释放者

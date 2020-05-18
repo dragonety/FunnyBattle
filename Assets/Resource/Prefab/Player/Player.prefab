@@ -195,7 +195,11 @@ MonoBehaviour:
     type: 3}
   shootPoint: {fileID: 1067988135780628669}
   sword: {fileID: 5243134914132203849}
+  isAttacking: 0
+  attackTime: 0.5
   sheild: {fileID: 5243234694384267839}
+  isBlocking: 0
+  blockTime: 0.5
   isLoopBlock: 0
 --- !u!1 &5242200082611053575
 GameObject:
@@ -1609,7 +1613,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   owner: {fileID: 5242196552886392851}
   damage: 20
-  stayTime: 1
 --- !u!1 &5243140706577226401
 GameObject:
   m_ObjectHideFlags: 0

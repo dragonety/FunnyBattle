@@ -49,12 +49,6 @@ public class PlayerController : NetworkBehaviour {
     [SerializeField]
     private float groundCheckDistance = 0.1f;
 
-    private bool isDeath;
-    private bool isMoving;
-    private bool isJumping;
-    private bool isBlocking;
-    private bool isAttacking;
-
 	#endregion
 
 	#region skill
@@ -68,12 +62,22 @@ public class PlayerController : NetworkBehaviour {
 
     [SerializeField]
     GameObject sword;
+	[HideInInspector]
+    [SyncVar]
+    public bool isAttacking = false;
+    [SerializeField]
+    private float attackTime = 0.7f;
+
     [SerializeField]
     GameObject sheild;
+	[HideInInspector]
+    [SyncVar]
+    public bool isBlocking = false;
+    [SerializeField]
+    private float blockTime = 0.7f;
+
     [SerializeField]
     bool isLoopBlock = false;
-
-    
 
 	#endregion
 
@@ -222,9 +226,18 @@ public class PlayerController : NetworkBehaviour {
         AnimatorStateInfo info = animator.GetCurrentAnimatorStateInfo(0);
         if (!info.IsName("Attack01")) {
             animator.Play("Attack01");
-            isAttacking = true;
+            StartCoroutine("AttackTime");
         }
     }
+
+	IEnumerator AttackTime() {
+        Debug.Log("startA");
+        isAttacking = true;
+        yield return new WaitForSeconds(attackTime);
+        isAttacking = false;
+        Debug.Log("StopA");
+	}
+
     public void Block() {
         AnimatorStateInfo info = animator.GetCurrentAnimatorStateInfo(0);
         if (!info.IsName("Attack02")) {
