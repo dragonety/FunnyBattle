@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using UnityEngine.Networking;
 
-public class TestPlayerEntity : NetworkBehaviour {
+public class PlayerEntity : NetworkBehaviour {
 
     [Header("=====Prefab=====")]
     [SerializeField]

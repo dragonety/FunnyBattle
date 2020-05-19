@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using UnityEditor;
+using BattleEvent;
 
 public class PlayerPhysicsComponent : PhysicsComponent {
 
@@ -12,4 +13,16 @@ public class PlayerPhysicsComponent : PhysicsComponent {
     public void OnUpdate(float delta) {
         
     }
+
+
+}
+
+public class ReceiverSpawn {
+	public void RegisterDelegates() {
+        EventManager.Instance.RegisterEvent(BattleEvent.EventType.spawnMagic, OnEventProcessSpawnMagic);
+	}
+
+	private void OnEventProcessSpawnMagic(BaseEventMsg msg) {
+        Debug.Log("receive process spawn magic");
+	}
 }

@@ -44,8 +44,7 @@ GameObject:
   - component: {fileID: 3692077698626731675}
   - component: {fileID: 8820365513145305198}
   - component: {fileID: 3250792282050840286}
-  - component: {fileID: 4577317518068029373}
-  - component: {fileID: 7975887563224131662}
+  - component: {fileID: 1011316323974313232}
   m_Layer: 9
   m_Name: Player
   m_TagString: Player
@@ -173,36 +172,7 @@ MonoBehaviour:
   param3: 
   param4: 
   param5: 
---- !u!114 &4577317518068029373
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5242196552886392851}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5346c74b1d45edd4c97d344041ae53ad, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  lerpRate: 10
-  health: 100
-  healthBar: {fileID: 6616729782298256864}
-  moveSpeed: 5
-  rotateSpeed: 30
-  groundCheckDistance: 0.1
-  shootSpeed: 40
-  magicBall: {fileID: 2884216389398387772, guid: 396c73c88dba7f848800487e108b6a51,
-    type: 3}
-  shootPoint: {fileID: 1067988135780628669}
-  sword: {fileID: 5243134914132203849}
-  isAttacking: 0
-  attackTime: 0.5
-  sheild: {fileID: 5243234694384267839}
-  isBlocking: 0
-  blockTime: 0.5
-  isLoopBlock: 0
---- !u!114 &7975887563224131662
+--- !u!114 &1011316323974313232
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -211,7 +181,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 5242196552886392851}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 21f9a0dfc516a3e4dac2bef1d9a49b1a, type: 3}
+  m_Script: {fileID: 11500000, guid: 1960c66310c864c6bafe33c7ecaf51e0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   magicBall: {fileID: 2884216389398387772, guid: 396c73c88dba7f848800487e108b6a51,
