@@ -28,7 +28,7 @@ public class PlayerController : NetworkBehaviour {
 
     [SerializeField]
     [SyncVar(hook = "SyncHealth")]
-    private int health = 100;
+    public int health = 100;
 
     [SerializeField]
     private RectTransform healthBar;

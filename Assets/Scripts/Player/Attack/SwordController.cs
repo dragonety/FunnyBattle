@@ -23,7 +23,7 @@ public class SwordController : MonoBehaviour {
             if (owner == other.gameObject) {
                 return false;
 			} else {
-                Debug.Log("return attack" + playerController.isAttacking);
+                Debug.Log("return attack" + playerController.isAttacking + playerController.health);
                 return playerController.isAttacking;
             }
         }
