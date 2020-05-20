@@ -12,3 +12,5 @@ public interface IUpdate {
 public interface IFixedUpdate {
     void OnFixedUpdate(float delta);
 }
+
+//public interface I

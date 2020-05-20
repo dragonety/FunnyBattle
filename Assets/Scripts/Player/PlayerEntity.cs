@@ -41,7 +41,7 @@ public class PlayerEntity : NetworkBehaviour {
     [SyncVar]
     private Quaternion rotation;
     [SyncVar(hook = "OnHealthChange")]
-    private int health;
+    public int health;
 
     Player player = new Player();
 
@@ -66,6 +66,7 @@ public class PlayerEntity : NetworkBehaviour {
         player.isLocal = isLocalPlayer;
         player.position = position;
         player.rotation = rotation;
+        player.id = netId.Value;
         player.Start();
 
         if (isLocalPlayer) {
@@ -79,7 +80,7 @@ public class PlayerEntity : NetworkBehaviour {
         player.health = health;
         player.position = position;
         player.rotation = rotation;
-        player.Update();
+        player.Update(Time.deltaTime);
     }
 
     private void LateUpdate() {
@@ -103,6 +104,19 @@ public class PlayerEntity : NetworkBehaviour {
     private void CmdOnRotationChange(Quaternion lastRotation) {
         rotation = lastRotation;
         //player.rotation = rotation;
+    }
+
+
+    [Command]
+    public void CmdSpawnGameObject(GameObject gameObject) {
+        Debug.Log("server control spawn");
+        RpcSpawnGameObject(gameObject);
+    }
+
+    [ClientRpc]
+    public void RpcSpawnGameObject(GameObject gameObject) {
+        Debug.Log("client spawn gameObject");
+        GameObject.Instantiate(gameObject);
     }
 
 }

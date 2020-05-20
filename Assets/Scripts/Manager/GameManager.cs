@@ -5,8 +5,33 @@ using System.Collections.Generic;
 public class GameManager : Singleton<GameManager> {
 
     private Dictionary<NetworkInstanceId, NetworkInstanceId> dictSpawnPlayer = new Dictionary<NetworkInstanceId, NetworkInstanceId>();
+    private Dictionary<uint, Player> dictPlayer = new Dictionary<uint, Player>();
 
     public GameObject localPlayer;
+
+    public void AddPlayer(uint id, Player player) {
+        if (dictPlayer.ContainsKey(id)) {
+            Debug.LogError("already have the player");
+        } else {
+            dictPlayer.Add(id, player);
+        }
+    }
+
+    public void RemovePlayer(uint id, Player player) {
+        if (dictPlayer.ContainsKey(id)) {
+            dictPlayer.Remove(id);
+        } else {
+            Debug.LogError("don't have the player");
+        }
+    }
+
+    public Player GetFromId(uint id) {
+        if (dictPlayer.ContainsKey(id)) {
+            return dictPlayer[id];
+        } else {
+            return null;
+        }
+    }
 
     public void AddSpawn(NetworkInstanceId spawn, NetworkInstanceId player) {
         dictSpawnPlayer[spawn] = player;

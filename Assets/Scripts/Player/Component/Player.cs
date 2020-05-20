@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Player {
+public class Player : GamePlayObject{
 
     public bool isLocal;
 
@@ -29,11 +29,13 @@ public class Player {
     public Vector3 position;
     public Quaternion rotation;
 
+    public uint id;
+
     //组件
     private MoveComponent moveComponent;
     //private NetComponent netComponent;
     private MoveComponent netMoveComponent;
-    private GraphicComponent graphicComponent;
+    public GraphicComponent graphicComponent;
     private PhysicsComponent physicsComponent;
     //组件list
     public List<BaseComponent> componentList = new List<BaseComponent>();
@@ -41,15 +43,21 @@ public class Player {
 
     public void Start() {
 
+        GameManager.Instance.AddPlayer(id, this);
+
         if (isLocal) {
             moveComponent = new PlayerMoveComponet();
             graphicComponent = new PlayerGraphicComponent();
-            //netComponent = new 
+            physicsComponent = new PlayerPhysicsComponent();
             componentList.Add(moveComponent);
             componentList.Add(graphicComponent);
+            componentList.Add(physicsComponent);
+            
         } else {
             moveComponent = new PlayerNetMoveComponent();
+            graphicComponent = new PlayerNetGraphicComponent();
             componentList.Add(moveComponent);
+            componentList.Add(graphicComponent);
         }
 
         if(componentList == null) {
@@ -61,13 +69,13 @@ public class Player {
         }
     }
 
-    public void Update() {
+    public void Update(float deltaTime) {
         if (componentList == null) {
             return;
         }
         componentAmount = componentList.Count;
         foreach(BaseComponent component in componentList) {
-            component.OnUpdate(Time.deltaTime);
+            component.OnUpdate(deltaTime);
         }
     }
 }

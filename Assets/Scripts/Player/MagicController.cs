@@ -35,7 +35,8 @@ public class MagicController : NetworkBehaviour {
 
     private bool CheckSelf(Collider other) {
 		if (other.tag == "Player") {
-            PlayerController playerController = other.gameObject.GetComponent<PlayerController>();
+            //PlayerController playerController = other.gameObject.GetComponent<PlayerController>();
+            PlayerEntity playerController = other.gameObject.GetComponent<PlayerEntity>();
 			if (playerController.netId == GameManager.Instance.GetPlayer(netId)) {
                 return true;
 			}

@@ -5,7 +5,7 @@ class PlayerMoveComponet : MoveComponent {
     private Player player;
 
     public void OnInit(Player player) {
-        this.player = player;
+        this.player = (Player)player;
     }
 
     public void OnUpdate(float delta) {

@@ -64,7 +64,7 @@ namespace BattleEvent {
 			}
 		}
 
-		public void SentEvent(EventType type, params object[] inParams) {
+		public void SendEvent(EventType type, params object[] inParams) {
 
 			BaseEventMsg msg = new BaseEventMsg(type, inParams);
 
@@ -75,27 +75,7 @@ namespace BattleEvent {
 
 	}
 
-	public class BaseEventMsg {
 
-		public EventType msgType;
-
-		public object[] paramObjects = null;
-
-		public BaseEventMsg() {
-
-		}
-
-		public BaseEventMsg(EventType type, params object[] inParams) {
-			msgType = type;
-			paramObjects = inParams;
-		}
-
-		public void SetEventMsg(EventType type, params object[] inParams) {
-			msgType = type;
-			paramObjects = inParams;
-		}
-
-	}
 
 	public enum EventType {
 		none,
