@@ -44,6 +44,14 @@ https://github.com/dragonety/FunnyBattle
     - 需要同步velocity
     - 在发生碰撞的时候需要从gameManager查询是否接触到的是技能释放者
 
+## 重构
+
+- GameManager管理所有系统
+  - 战斗系统
+    - 战斗模块
+- UpdateManager管理所有update的调用
+- EventManage管理所有消息事件
+
 ## 游戏流程
 
 ### Host：
