@@ -2,6 +2,8 @@
 
 https://github.com/dragonety/FunnyBattle
 
+Unity版本2018.4.1
+
 ## 简介
 
 此项目的主要目的在于熟悉UNet的通信流程，练习游戏编程模式与常用的架构方法，本次项目学习的过程如下：
@@ -48,9 +50,32 @@ https://github.com/dragonety/FunnyBattle
 
 - GameManager管理所有系统
   - 战斗系统
-    - 战斗模块
-- UpdateManager管理所有update的调用
-- EventManage管理所有消息事件
+    - BattleModule战斗模块
+      - 战斗模块里需要用到UpdateManager/MessageManager/TimerManager/
+- UpdateManager管理所有update的调用。通过一个static的updateRegister来进行事件的注册
+  - UpdateRegister用来注册Update和FixedUpdate事件
+- MessageManager管理所有消息事件。通过一个static的messageRegister来进行事件的注册
+  - MessageRegister用来注册调度器Dispatcher
+- TimerManager管理所有计时器。通过一个static的timerRegister来进行计时器的注册
+  - TimerRegister用来注册计时器TimerTick。还需要额外在UpdateManager里注册TimerManager需要用到的Update事件
+    - TimerTick中存放计时器相关的数值
+- BattleManager管理战斗相关的manager。需要用到CachedManager/EntityManager
+- CachedManager管理缓存相关。通过一个static的EffectCachedPool来管理特效缓存池
+  - EffectCachedPool特效缓存池。创建gameObject挂载各类EffectCached
+    - EffectCached特效的对象池。使用一个队列来生成、选择特效Effect
+      - Effect特效。MonoBehavior，具体实现play/stop/recycle
+- EntityManager管理实例。通过一个static的Entities管理具体的实例
+  - Entities通过列表字典管理所有的Entity
+    - Entity具体的实例。包含components/features/attributes/configs
+      - Components使用列表字典管理具体的Component
+        - Component组件
+      - Features使用列表字典管理具体的Feature
+        - Feature特征
+      - Attributes使用列表字典管理具体的Attribute
+        - Attribute属性
+      - Configs使用列表字典管理具体的Config
+        - Config配置
+- 
 
 ## 游戏流程
 
@@ -91,3 +116,7 @@ ESC打开UI
 5.20
 
 完成了“事件队列模式”，进一步重构代码
+
+5.21
+
+重构了除UI外的大部分框架

@@ -1,5 +1,6 @@
 ﻿namespace Reconstitution {
     public class Tick {
+        //???
 
         private float curTime;
         private float limitTime;

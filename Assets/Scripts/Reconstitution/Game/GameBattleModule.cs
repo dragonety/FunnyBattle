@@ -4,13 +4,13 @@
         public override void OnInit() {
             UpdateManager.Init();
             MessageManager.Init();
-            //timerManager
-            //battleManager
+            TimerManager.Init();
+            BattleManager.Init();
         }
 
         public override void OnRemove() {
-            //battleManager
-            //timerManager
+            BattleManager.Dispose();
+            TimerManager.Dispose();
             MessageManager.Dispose();
             UpdateManager.Dispose();
         }
