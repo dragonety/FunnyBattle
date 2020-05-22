@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.Networking;
+using Reconstitution;
 
 public class UIManager : SingletonMonobehaviour<UIManager> {
 
@@ -28,24 +29,28 @@ public class UIManager : SingletonMonobehaviour<UIManager> {
     }
 
     public void StartHost() {
-        GameManager.Instance.StartHost();
+        //GameManager.Instance.StartHost();
+        UnetManager.instance.StartHost();
         SwitchTo(UIEnum.game);
         SwitchTo(UIEnum.game);
     }
 
     public void StartClient() {
-        GameManager.Instance.StartClient();
+        //GameManager.Instance.StartClient();
+        UnetManager.instance.StartClient();
         SwitchTo(UIEnum.game);
         SwitchTo(UIEnum.game);
     }
 
     public void StopHost() {
-        GameManager.Instance.StopHost();
+        //GameManager.Instance.StopHost();
+        UnetManager.instance.StopHost();
         SwitchTo(UIEnum.lobby);
     }
 
     public void StopClient() {
-        GameManager.Instance.StopClient();
+        //GameManager.Instance.StopClient();
+        UnetManager.instance.StopClient();
         SwitchTo(UIEnum.lobby);
     }
 

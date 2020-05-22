@@ -10,6 +10,8 @@ namespace Reconstitution {
         //  方便通过类型找到对应compose, 类似getcomponent
         private Dictionary<System.Type, ICompose> composeDict;
 
+        private bool debug = false;
+
         public GameManager() {
             composeList = new List<ICompose>();
             composeDict = new Dictionary<System.Type, ICompose>();
@@ -18,12 +20,14 @@ namespace Reconstitution {
         //  Config
 
         public void OnInit() {
+            if (debug) Debug.Log("game manager onInit");
             // AudioManager
             // SystemBehaviour
         }
 
         public void OnRemove() {
-            foreach(ICompose compose in composeList) {
+            if (debug) Debug.Log("game manager onRemove");
+            foreach (ICompose compose in composeList) {
                 compose.OnRemove();
             }
             composeList.Clear();
@@ -31,12 +35,14 @@ namespace Reconstitution {
         }
 
         public void OnUpdate(float deltaTime) {
-            foreach(ICompose compose in composeList) {
+            if (debug) Debug.Log("game manager onUpdate");
+            foreach (ICompose compose in composeList) {
                 compose.OnUpdate(deltaTime);
             }
         }
 
         public void OnFixedUpdate(float deltaTime) {
+            if (debug) Debug.Log("game manager onFixedUpdate");
             foreach(ICompose compose in composeList) {
                 compose.OnFixedUpdate(deltaTime);
             }
@@ -50,6 +56,7 @@ namespace Reconstitution {
             System.Type type = typeof(T);
             if (!composeDict.ContainsKey(type)) {
                 T compose = new T();
+                Debug.Log("Game Manager add " + type.Name);
                 composeList.Add(compose);
                 composeDict.Add(type, compose);
                 compose.OnInit();
@@ -63,6 +70,7 @@ namespace Reconstitution {
          */
         public void Remove<T>() where T : ICompose {
             System.Type type = typeof(T);
+            if (debug) Debug.Log("game manager remove " + type.Name);
             ICompose compose = null;
             if (composeDict.TryGetValue(type, out compose)) {
                 composeDict.Remove(type);

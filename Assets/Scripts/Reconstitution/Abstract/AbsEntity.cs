@@ -1,4 +1,6 @@
-﻿namespace Reconstitution {
+﻿using UnityEngine;
+
+namespace Reconstitution {
 
     public abstract class AbsEntity : IEntity {
 
@@ -6,6 +8,8 @@
         private Features features;
         private Attributes attributes;
         private Configs configs;
+
+        private bool debug = false;
 
         public AbsEntity() {
             components = new Components();
@@ -89,11 +93,13 @@
 
 
         public void OnFixedUpdate(float deltaTime) {
+            if (debug) Debug.Log(" AbsEntity OnFixedUpdate ");
             updateRegister.OnFixedUpdate(deltaTime);
         }
 
 
         public void OnUpdate(float deltaTime) {
+            if (debug) Debug.Log(" AbsEntity OnUpdate ");
             updateRegister.OnUpdate(deltaTime);
         }
 

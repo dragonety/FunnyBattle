@@ -1,4 +1,6 @@
-﻿namespace Reconstitution {
+﻿using UnityEngine;
+
+namespace Reconstitution {
     public class UpdateManager {
 
         private static UpdateRegister register;
@@ -37,7 +39,7 @@
         }
 
         public static void UnregisterFixedUpdate(UpdateDelegate fixedUpdate) {
-            register.UnregisterUpdate(fixedUpdate);
+            register.UnregisterFixedUpdate(fixedUpdate);
         }
 
     }

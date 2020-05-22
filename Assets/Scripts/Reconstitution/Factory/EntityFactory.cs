@@ -8,10 +8,13 @@ namespace Reconstitution {
 
             Entity entity = new Entity(id, group);
             entity.OnInit();
-            //entity.AddAttribute()
-            //entity.AddFeature()
+
+            entity.AddAttribute<HealthAttribute>(new HealthAttribute(health));
+            entity.AddFeature<ObjectFeature>(new ObjectFeature(gameObject));
+
             if (isLocalPlayer) {
-                //entity.AddComponent()
+                Debug.Log("entity " + id + " add component " + " localMoveComponent");
+                entity.AddComponent<PlayerLocalMoveComponent>();
             } else {
                 //entity.AddComponent()
             }

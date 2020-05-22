@@ -1,10 +1,13 @@
 ﻿using System.Collections.Generic;
+using UnityEngine;
 
 namespace Reconstitution {
     public abstract class AbsBehaviour : AbsCompose {
 
         private List<ICompose> moduleList;
         private Dictionary<System.Type, ICompose> moduleDict;
+
+        private bool debug = false;
 
         public AbsBehaviour() {
             moduleList = new List<ICompose>();
@@ -24,13 +27,15 @@ namespace Reconstitution {
         }
 
         public override void OnUpdate(float deltaTime) {
+            if (debug) Debug.Log("AbsBehaviour OnUpdate");
             foreach(ICompose module in moduleList) {
                 module.OnUpdate(deltaTime);
             }
         }
 
         public override void OnFixedUpdate(float deltaTime) {
-            foreach(ICompose module in moduleList) {
+            if (debug) Debug.Log("AbsBehaviour OnFixedUpdate");
+            foreach (ICompose module in moduleList) {
                 module.OnFixedUpdate(deltaTime);
             }
         }

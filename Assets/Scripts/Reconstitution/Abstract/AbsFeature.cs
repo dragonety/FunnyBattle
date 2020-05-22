@@ -1,9 +1,11 @@
-﻿using UnityEngine;
-using UnityEditor;
+﻿namespace Reconstitution {
 
-public class AbsFeature : ScriptableObject {
-    [MenuItem("Tools/MyTool/Do It in C#")]
-    static void DoIt() {
-        EditorUtility.DisplayDialog("MyTool", "Do It in C# !", "OK", "");
+    public abstract class AbsFeature : IFeature {
+        public virtual void OnInit(IEntity entity) {
+        }
+
+        public virtual void OnRemove() {
+        }
     }
+
 }

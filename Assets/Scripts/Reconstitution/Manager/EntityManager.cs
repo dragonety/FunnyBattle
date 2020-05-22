@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using UnityEngine;
 
 namespace Reconstitution {
     public class EntityManager {
@@ -14,8 +15,8 @@ namespace Reconstitution {
         public static void Dispose() {
             entities.Dispose();
             entities = null;
-            UpdateManager.UnregisterFixedUpdate(OnFixedUpdate);
             UpdateManager.UnregisterUpdate(OnUpdate);
+            UpdateManager.UnregisterFixedUpdate(OnFixedUpdate);
         }
 
         public static void OnUpdate(float deltaTime) {

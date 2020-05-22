@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using UnityEngine;
 
 namespace Reconstitution {
     public class Entities : IDisposable, IUpdate, IFixedUpdate {
@@ -8,6 +9,8 @@ namespace Reconstitution {
         private List<Entity> entityList;
         private Dictionary<uint, Entity> entityDict;
         private Dictionary<uint, List<Entity>> entityGroupDict;
+
+        private bool debug = false;
 
         public Entities() {
             temp = new List<Entity>();
@@ -24,6 +27,7 @@ namespace Reconstitution {
         }
 
         public void OnUpdate(float deltaTime) {
+            if (debug) Debug.Log("entities OnUpdate");
             Refill();
             foreach(Entity entity in temp) {
                 entity.OnUpdate(deltaTime);
@@ -31,6 +35,7 @@ namespace Reconstitution {
         }
 
         public void OnFixedUpdate(float deltaTime) {
+            if (debug) Debug.Log("entities OnFixedUpdate");
             Refill();
             foreach (Entity entity in temp) {
                 entity.OnFixedUpdate(deltaTime);

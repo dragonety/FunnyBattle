@@ -16,10 +16,12 @@
         }
 
         public override void OnUpdate(float deltaTime) {
+            base.OnUpdate(deltaTime);
             UpdateManager.OnUpdate(deltaTime);
         }
 
         public override void OnFixedUpdate(float deltaTime) {
+            base.OnFixedUpdate(deltaTime);
             UpdateManager.OnFixedUpdate(deltaTime);
         }
     }
