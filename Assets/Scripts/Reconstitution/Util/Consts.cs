@@ -9,6 +9,9 @@
         public const float attackTime = 0.5f;
         public const float blockTime = 0.5f;
         public const float spawnTIme = 0.5f;
+        public const float weaponDamage = 10;
+
+        public const uint weaponIDStart = 1000;
     }
 
 }

@@ -517,7 +517,7 @@ GameObject:
   - component: {fileID: 902607969018230647}
   - component: {fileID: 914118324410692491}
   - component: {fileID: 2612805749769149225}
-  - component: {fileID: 2782893148527648202}
+  - component: {fileID: 8018921377206314550}
   m_Layer: 11
   m_Name: MeleeWarrior1HSword
   m_TagString: Weapon
@@ -598,7 +598,7 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.14261739, y: 0.9509879, z: 0.030535126}
   m_Center: {x: -0.00000023454737, y: 0.36219957, z: -0.00000055767157}
---- !u!114 &2782893148527648202
+--- !u!114 &8018921377206314550
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -607,11 +607,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 934698001063237839}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c57e76b4a908e804f869c60e32f7900e, type: 3}
+  m_Script: {fileID: 11500000, guid: e98009d39c02649228e7d6dfc494c81c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  owner: {fileID: 935596917331204501}
-  damage: 20
+  playerId: 0
+  canAttack: 0
+  player: {fileID: 53867027600697939}
 --- !u!1 &934711073584173149
 GameObject:
   m_ObjectHideFlags: 0
@@ -1871,8 +1872,10 @@ GameObject:
   - component: {fileID: 4491168816667675112}
   - component: {fileID: 7576971943506659160}
   - component: {fileID: 3557153309775672595}
+  - component: {fileID: 5408640442537851391}
+  - component: {fileID: 53867027600697939}
   m_Layer: 9
-  m_Name: Player
+  m_Name: RePlayer
   m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2010,7 +2013,33 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c2b4ecd13817ce648ade25d88b1d55d3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 0
+  health: 100
+  healthBar: {fileID: 2299286775984202854}
+--- !u!114 &5408640442537851391
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 935596917331204501}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3c7d873b9c9dd43b1a74bc637aff9b3d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &53867027600697939
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 935596917331204501}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9692e472f493b483c8bcf121c334a57a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sword: {fileID: 934698001063237839}
 --- !u!1 &935621838524306039
 GameObject:
   m_ObjectHideFlags: 0

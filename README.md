@@ -56,6 +56,7 @@ Unity版本2018.4.1
 - UpdateManager管理所有update的调用。通过一个static的updateRegister来进行事件的注册
 
   - UpdateRegister用来注册Update和FixedUpdate事件
+    - 最终在component中直接调用RegisterUpdate RegisterFixedUpdate来注册对应的事件
 
 - MessageManager管理所有消息事件。通过一个static的messageRegister来进行事件的注册
 
@@ -143,3 +144,15 @@ ESC打开UI
 5.21
 
 重构了除UI外的大部分框架
+
+5.22
+
+除UI外框架梳理结束，开始整理游戏逻辑
+
+5.23
+
+添加了移动组件，分别使用SyncVar和Cmd+Rpc完成
+
+5.24
+
+添加了攻击组件

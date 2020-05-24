@@ -31,5 +31,13 @@ namespace Reconstitution {
             animator.SetBool("isMoving", false);
         }
 
+        public void Hurt() {
+            animator.Play("GetHurt");
+		}
+
+        public void Stab() {
+            animator.SetBool("isGetStab", true);
+		}
+
     }
 }

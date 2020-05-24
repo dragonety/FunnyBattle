@@ -68,7 +68,7 @@ namespace Reconstitution {
 
         public override void OnClientSceneChanged(NetworkConnection conn) {
             base.OnClientSceneChanged(conn);
-            GameManager.Instance.Add<GameBattleBehaviour>();
+            GameManager.Instance.Add<GameBehaviour>();
             Debug.Log("Client scene change");
         }        
 
