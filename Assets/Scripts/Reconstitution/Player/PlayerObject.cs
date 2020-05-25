@@ -39,19 +39,7 @@ namespace Reconstitution {
             healthBar.sizeDelta = new Vector2(health, healthBar.sizeDelta.y);
         }
 
-        public void GetStab(uint targetId) {
-            CmdGetStab(targetId);
-        }
-
-        [Command]
-        private void CmdGetStab(uint targetId) {
-            RpcGetStab(targetId);
-		}
-
-        [Client]
-        private void RpcGetStab(uint targetId) {
-            EntityManager.Dispatcher(MessageID.HealthUpdate, targetId, UintBody.Default.Init(targetId));
-        }
+        
 
         
 

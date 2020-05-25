@@ -5,23 +5,23 @@ namespace Reconstitution {
 
         private AnimatorFeature animatorFeature;
         private HealthAttribute healthAttribute;
-        private PlayerObject player;
+        private PlayerAttack player;
 
         private bool debug = true;
 
         public override void OnInit() {
             animatorFeature = Entity.GetFeature<AnimatorFeature>();
             healthAttribute = Entity.GetAttribute<HealthAttribute>();
-            player = Entity.GetFeature<ObjectFeature>().GetComponent<PlayerObject>();
+            player = Entity.GetFeature<ObjectFeature>().GetComponent<PlayerAttack>();
 
             RegisterMessage(MessageID.HealthUpdate, (IBody body) => {
                 if (debug) Debug.Log("message healthupdate");
                 float damage = (body as FloatBody).value;
                 healthAttribute.curHealth -= damage;
-                player.health = healthAttribute.curHealth;
+                //player.health = healthAttribute.curHealth;
                 //player.health -= damage;
                 if (debug) Debug.Log(Entity.Id + " health is " + healthAttribute.curHealth);
-                player.HealthChange(healthAttribute.curHealth);
+                //player.HealthChange(healthAttribute.curHealth);
                 GetStab();
             });
             

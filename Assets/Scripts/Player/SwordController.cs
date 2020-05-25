@@ -6,10 +6,12 @@ using UnityEngine.Networking;
 public class SwordController : MonoBehaviour {
 
     [SerializeField]
-    private GameObject owner;
+    private PlayerEntity owner;
 
     [SerializeField]
     private int damage;
+
+    private bool debug = false;
 
     private ReceiverSword receiverSword = new ReceiverSword();
 
@@ -22,8 +24,9 @@ public class SwordController : MonoBehaviour {
     }
 
     private void OnTriggerEnter(Collider other) {
-        Debug.Log("trigger enter");
+        if (debug) Debug.Log("trigger enter " + receiverSword.canAttack + other.tag);
         if (CheckHitable(other) && receiverSword.canAttack) {
+            if (debug) Debug.Log("trigger enter success");
             receiverSword.canAttack = false;
             Hit(other.ClosestPointOnBounds(transform.position), other);
         }
@@ -31,8 +34,9 @@ public class SwordController : MonoBehaviour {
 
     private bool CheckHitable(Collider other) {
         if (other.tag == "Player") {
-            PlayerEntity playerController = owner.GetComponent<PlayerEntity>();
-            if (owner == other.gameObject) {
+            PlayerEntity otherEntity = other.gameObject.GetComponent<PlayerEntity>();
+            if (debug) Debug.Log(owner.netId + "hit" + otherEntity.netId);
+            if (owner.netId == otherEntity.netId) {
                 return false;
 			} else {
                 return true;
@@ -42,16 +46,14 @@ public class SwordController : MonoBehaviour {
     }
 
     private void Hit(Vector3 hitPoint, Collider other) {
-        if (other.tag == "Player") {
-            //EventManager.Instance.SendEvent(BattleEvent.EventType.hitAttack, other.gameObject.GetComponent<PlayerEntity>().netId.Value, damage);
-            //CmdHit(other.gameObject.GetComponent<PlayerEntity>().netId.Value, damage);
-            owner.GetComponent<PlayerAttack>().CmdAttack(other.gameObject.GetComponent<PlayerEntity>().netId.Value, damage);
-        }
+        owner.Attack(other.gameObject.GetComponent<PlayerEntity>().netId.Value, damage, hitPoint);
     }
 
 }
 
 public class ReceiverSword {
+
+    private bool debug = false;
 
     //private SwordController sword;
     public bool canAttack = false;
@@ -65,7 +67,7 @@ public class ReceiverSword {
     }
 
     private void OnEventProcessAttack(BaseEventMsg msg) {
-        Debug.Log("onEvent attack");
+        if (debug) Debug.Log("onEvent attack");
         canAttack = true;
     }
 }

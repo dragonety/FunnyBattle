@@ -17,6 +17,8 @@ namespace Reconstitution {
         private GameObject localPlayer;
 
         private void Awake() {
+            
+            Debug.Log("net awake");
             instance = this;
         }
 

@@ -24,7 +24,7 @@ Unity版本2018.4.1
   - EventManager事件队列的管理，可以传递诸如攻击行为、受伤行为、发射行为
 - 战斗玩法：
   - ~~PlayerController包含所有角色控制的内容~~
-  - PlayerEntity作为一个player实例，使用“组件模式”将player上的功能拆分
+  - PlayerEntity作为一个player的网络实例，包含一些需要从local调用的方法，并使用“组件模式”将player上的功能拆分
   - 使用“消息队列模式”来传递消息
     - PlayerEntity本身作为NetworkBehaviour来通过SyncVar同步数据
       - 同步的数据包括position rotation health
@@ -40,11 +40,11 @@ Unity版本2018.4.1
     - PlayerNetGraphicComponent控制非localplayer动画表现
     
       - player受伤动画
+    - PlayerPhysicsComponent主要处理一些逻辑，以及消息的接受
+      - 死亡/攻击
     - player发射技能的时候需要向gameManager记录发射物与发射人的dict
   - SwordController控制攻击行为
   - MagicController包含技能的碰撞检测
-    - 需要同步velocity
-    - 在发生碰撞的时候需要从gameManager查询是否接触到的是技能释放者
 
 ## 重构
 
@@ -139,7 +139,7 @@ ESC打开UI
 
 5.20
 
-完成了“事件队列模式”，进一步重构代码
+完成了“事件队列模式”。以去MonoBehaviour的形式进一步重构代码
 
 5.21
 
@@ -155,4 +155,8 @@ ESC打开UI
 
 5.24
 
-添加了攻击组件
+添加了攻击组件，遇到问题
+
+5.25
+
+优先用老的架构调了一个能用的版本，问题之后再研究

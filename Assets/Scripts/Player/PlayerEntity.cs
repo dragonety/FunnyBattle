@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using UnityEngine.Networking;
+using BattleEvent;
 
 public class PlayerEntity : NetworkBehaviour {
 
@@ -43,7 +44,9 @@ public class PlayerEntity : NetworkBehaviour {
     [SyncVar(hook = "OnHealthChange")]
     public int health;
 
-    Player player = new Player();
+    private Player player = new Player();
+
+    private bool debug = true;
 
     private void Start() {
 
@@ -64,6 +67,7 @@ public class PlayerEntity : NetworkBehaviour {
         player.isDebug = isDebug;
         player.isLoopBlock = isLoopBlock;
         player.isLocal = isLocalPlayer;
+        player.isServer = isServer;
         player.position = position;
         player.rotation = rotation;
         player.id = netId.Value;
@@ -92,31 +96,36 @@ public class PlayerEntity : NetworkBehaviour {
 
     private void OnHealthChange(int lastHealth) {
         healthBar.sizeDelta = new Vector2(lastHealth, healthBar.sizeDelta.y);
+        player.health = lastHealth;
     }
 
     [Command]
     private void CmdOnPositionChange(Vector3 lastPosition) {
         position = lastPosition;
-        //player.position = position;
+        player.position = position;
     }
 
     [Command]
     private void CmdOnRotationChange(Quaternion lastRotation) {
         rotation = lastRotation;
-        //player.rotation = rotation;
+        player.rotation = rotation;
     }
 
+    public void Attack(uint id, int damage, Vector3 hitPoint) {
+        if (debug) Debug.Log(netId + " just attck " + id);
+        CmdAttack(id, damage, hitPoint);
+    }
 
     [Command]
-    public void CmdSpawnGameObject(GameObject gameObject) {
-        Debug.Log("server control spawn");
-        RpcSpawnGameObject(gameObject);
+    public void CmdAttack(uint id, int damage, Vector3 hitPoint) {
+        if (debug) Debug.Log("cmd attack " + id + " damage " + damage);
+        RpcGetAttack(id, damage, hitPoint);
     }
 
     [ClientRpc]
-    public void RpcSpawnGameObject(GameObject gameObject) {
-        Debug.Log("client spawn gameObject");
-        GameObject.Instantiate(gameObject);
+    public void RpcGetAttack(uint id, int damage, Vector3 hitPoint) {
+        if (debug) Debug.Log("Rpc get attack" + id);
+        EventManager.Instance.SendEvent(BattleEvent.EventType.hitAttack, id, damage, hitPoint);
     }
 
 }

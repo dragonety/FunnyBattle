@@ -4,12 +4,17 @@ class PlayerMoveComponet : MoveComponent {
 
     private Player player;
 
+    public bool canMove = true;
+
     public void OnInit(Player player) {
         this.player = (Player)player;
+        canMove = true;
     }
 
     public void OnUpdate(float delta) {
-        Move(GetInputData());
+        if (canMove) {
+            Move(GetInputData());
+        }
     }
 
     private Vector3 GetInputData() {

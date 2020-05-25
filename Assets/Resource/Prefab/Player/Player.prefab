@@ -1528,7 +1528,7 @@ GameObject:
   - component: {fileID: 5241443017812653809}
   - component: {fileID: 5229932920923533837}
   - component: {fileID: 6951694640231652015}
-  - component: {fileID: 7108156989690338380}
+  - component: {fileID: 4587629643092669425}
   m_Layer: 11
   m_Name: MeleeWarrior1HSword
   m_TagString: Weapon
@@ -1609,7 +1609,7 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.14261739, y: 0.9509879, z: 0.030535126}
   m_Center: {x: -0.00000023454737, y: 0.36219957, z: -0.00000055767157}
---- !u!114 &7108156989690338380
+--- !u!114 &4587629643092669425
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1618,10 +1618,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 5243134914132203849}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c57e76b4a908e804f869c60e32f7900e, type: 3}
+  m_Script: {fileID: 11500000, guid: 15c4981053af648ca855e04abbec9ad5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  owner: {fileID: 5242196552886392851}
+  owner: {fileID: 1011316323974313232}
   damage: 20
 --- !u!1 &5243140706577226401
 GameObject:

@@ -56,7 +56,7 @@ MonoBehaviour:
     type: 3}
   m_AutoCreatePlayer: 1
   m_PlayerSpawnMethod: 1
-  m_OfflineScene: Lobby
+  m_OfflineScene: 
   m_OnlineScene: Game
   m_SpawnPrefabs:
   - {fileID: 2884216389398387772, guid: 396c73c88dba7f848800487e108b6a51, type: 3}

@@ -5,6 +5,7 @@ using UnityEngine;
 public class Player : GamePlayObject{
 
     public bool isLocal;
+    public bool isServer;
 
     public GameObject gameObject;
     public Transform transform;
@@ -33,8 +34,6 @@ public class Player : GamePlayObject{
 
     //组件
     private MoveComponent moveComponent;
-    //private NetComponent netComponent;
-    private MoveComponent netMoveComponent;
     public GraphicComponent graphicComponent;
     private PhysicsComponent physicsComponent;
     //组件list
