@@ -18,6 +18,8 @@ Unity版本2018.4.1
 
 ## 项目功能
 
+### 主Monobehaviour架构
+
 - 管理模块：
   - GameManager记录Player和Magic的NetID
   - EffectManager特效的管理
@@ -46,7 +48,7 @@ Unity版本2018.4.1
   - SwordController控制攻击行为
   - MagicController包含技能的碰撞检测
 
-## 重构
+### 去Monobehaviour架构
 
 - GameManager管理所有系统
   - 战斗系统
@@ -131,32 +133,5 @@ ESC打开UI
 
 点击stopClient关闭并返回lobby场景
 
-## 学习日志
+## 当前问题
 
-5.19
-
-学习了“组件模式”，应用到了playerController，在应用过程中发现拆分后到component没有合适的消息传播机制，于是学习了“事件队列模式”来处理消息的注册与传递（未完成）
-
-5.20
-
-完成了“事件队列模式”。以去MonoBehaviour的形式进一步重构代码
-
-5.21
-
-重构了除UI外的大部分框架
-
-5.22
-
-除UI外框架梳理结束，开始整理游戏逻辑
-
-5.23
-
-添加了移动组件，分别使用SyncVar和Cmd+Rpc完成
-
-5.24
-
-添加了攻击组件，遇到问题
-
-5.25
-
-优先用老的架构调了一个能用的版本，问题之后再研究
